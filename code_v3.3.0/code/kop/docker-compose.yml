@@ -99,4 +99,14 @@ services:
     depends_on: 
       - "kafka0"
       - "schema-registry"
-    
+  
+  connect-ui:
+    image: landoop/kafka-connect-ui
+    ports: 
+      - "8084:8084"
+    environment: 
+      PORT: "8084"
+      PROXY: "true"
+      CONNECT_URL: "http://connect:8083"
+    depends_on: 
+      - "connect"
