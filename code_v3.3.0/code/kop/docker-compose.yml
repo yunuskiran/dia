@@ -101,7 +101,7 @@ services:
       - "schema-registry"
   
   connect-ui:
-    image: landoop/kafka-connect-ui
+    image: landoop/kafka-connect-ui:0.9.7
     ports: 
       - "8084:8084"
     environment: 
