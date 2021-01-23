@@ -106,7 +106,7 @@ services:
       - "8084:8084"
     environment: 
       PORT: "8084"
-      PROXY: "true"
+      PROXY: "false"
       CONNECT_URL: "http://connect:8083"
     depends_on: 
       - "connect"
