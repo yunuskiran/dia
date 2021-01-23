@@ -101,7 +101,7 @@ services:
       - "schema-registry"
  
   topics-ui:
-    image: landoop/kafka-topics-ui:latest
+    image: landoop/kafka-topics-ui:0.9.4
     ports: 
       - "8085:8085"
     environment: 
