@@ -99,14 +99,3 @@ services:
     depends_on: 
       - "kafka0"
       - "schema-registry"
- 
-  topics-ui:
-    image: landoop/kafka-topics-ui:0.9.4
-    ports: 
-      - "8085:8085"
-    environment: 
-      PORT: "8085"
-      PROXY: "true"
-      KAFKA_REST_PROXY_URL: "http://rest-proxy:8082"
-    depends_on: 
-      - "rest-proxy"
