@@ -103,10 +103,10 @@ services:
   connect-ui:
     image: landoop/kafka-connect-ui:0.9.7
     ports: 
-      - "8084:8084"
+      - "8000:8000"
     environment: 
-      PORT: "8084"
-      PROXY: "false"
+      PORT: "8000"
+      PROXY: "true"
       CONNECT_URL: "http://connect:8083"
     depends_on: 
       - "connect"
