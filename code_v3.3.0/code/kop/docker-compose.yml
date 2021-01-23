@@ -108,4 +108,14 @@ services:
       POSTGRES_USER: "cta_admin"
       POSTGRES_PASSWORD: "chicago"
       POSTGRES_DB: "cta"
-    
+  
+  schema-registry-ui:
+    image: landoop/schema-registry-ui:0.9.5
+    ports: 
+      - "8086:8086"
+    environment: 
+      PORT: "8086"
+      PROXY: "true"
+      SCHEMAREGISTRY_URL: "http://schema-registry:8081/"
+    depends_on: 
+      - "schema-registry"
