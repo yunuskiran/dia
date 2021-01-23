@@ -1,0 +1,27 @@
+version: '3.7'
+
+services: 
+  zookeeper:
+    image: confluentinc/cp-zookeeper:5.2.2
+    ports: 
+      - "2181:2181"
+    environment: 
+      ZOOKEEPER_CLIENT_PORT: "2181"
+  
+  kafka0:
+    image: confluentinc/cp-kafka:5.2.2
+    restart: "no"
+    ports: 
+      - "9092:9092"
+    environment: 
+      KAFKA_ZOOKEEPER_CONNECT: "zookeeper:2181"
+      KAFKA_ADVERTISED_LISTENERS: "INTERNAL://kafka0:19092,EXTERNAL://${DOCKER_HOST_IP:-127.0.0.1}:9092"
+      KAFKA_INTER_BROKER_LISTENER_NAME: "INTERNAL"
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: "INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT"
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: "1"
+      KAFKA_ZOOKEEPER_SESSION_TIMEOUT: "6000"
+      KAFKA_RESTART_ATTEMPTS: "10"
+      KAFKA_RESTART_DELAY: "5"
+      ZOOKEEPER_AUTOPURGE_PURGE_INTERVAL: "0"
+    depends_on: 
+      - "zookeepers"
