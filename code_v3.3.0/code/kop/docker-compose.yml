@@ -24,4 +24,4 @@ services:
       KAFKA_RESTART_DELAY: "5"
       ZOOKEEPER_AUTOPURGE_PURGE_INTERVAL: "0"
     depends_on: 
-      - "zookeepers"
+      - "zookeeper"
